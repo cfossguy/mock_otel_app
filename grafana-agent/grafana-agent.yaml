@@ -32,6 +32,9 @@ metrics:
           metrics_path: '/actuator/prometheus'
           static_configs:
             - targets: ['localhost:8080']
+        - job_name: local_scrape
+          static_configs:
+            - targets: [ 'localhost:12345' ]
   global:
     external_labels:
       app: mock_app
@@ -55,3 +58,5 @@ traces:
           protocols:
             grpc:
               endpoint: localhost:4317
+      service_graphs:
+        enabled: true
